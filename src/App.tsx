@@ -6,9 +6,11 @@ const data = {
   items: [
     {
       name: 'Level 2.1',
-      items: [{
-        name: 'Level 3'
-      }]
+      items: [
+        { name: 'Level 3.1' },
+        { name: 'Level 3.2' },
+        { name: 'Level 3.3' }
+      ]
     },
     {
       name: 'Level 2.2',
