@@ -1,7 +1,13 @@
-ul {
-  padding-inline-start: 40px;
+.recursive details + details,
+.recursive details + div {
+  margin-top: 8px;
 }
 
-.content {
-  padding-left: 16px;
+.recursive details summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.recursive details .content {
+  margin-left: 16px;
 }

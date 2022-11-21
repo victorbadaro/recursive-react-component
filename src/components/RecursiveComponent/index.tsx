@@ -1,27 +1,31 @@
 import './styles.css';
 
-interface RecursiveComponentProps {
+export interface ListItem {
   name: string;
-  items?: RecursiveComponentProps[];
+  list?: ListItem[];
 }
 
-export function RecursiveComponent({ name, items }: RecursiveComponentProps) {
-  const hasChildren = items && items.length;
+interface RecursiveComponentProps {
+  list: ListItem[];
+}
 
+export function RecursiveComponent({ list }: RecursiveComponentProps) {
   return (
-    // <ul>
-    //   <li>{name}</li>
-    //   {hasChildren && items.map((item, index) => (
-    //     <RecursiveComponent key={index} name={item.name} items={item.items} />
-    //   ))}
-    // </ul>
-    <details>
-      <summary>{name}</summary>
-      <div className="content">
-        {hasChildren && items.map((item, index) => (
-          <RecursiveComponent key={index} name={item.name} items={item.items} />
-        ))}
-      </div>
-    </details>
+    <div className="recursive">
+      {list.map((listItem, index) => {
+        if(listItem.list && listItem.list.length > 0) {
+          return (
+            <details key={index}>
+              <summary>{listItem.name}</summary>
+              <div className="content">
+                <RecursiveComponent list={listItem.list} />
+              </div>
+            </details>
+          );
+        }
+
+        return <div key={index}>{listItem.name}</div>
+      })}
+    </div>
   );
 }
